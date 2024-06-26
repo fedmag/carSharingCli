@@ -35,7 +35,7 @@ public class CompanyDaoImpl implements CompanyDao {
   @Override
   public Company getById(int id) {
     List<Company> companies = new ArrayList<>();
-    List<Object[]>  objects = dbClient.runForResult(String.format(SELECT_BY_ID, id));
+    List<Object[]> objects = dbClient.runForResult(String.format(SELECT_BY_ID, id));
     for (Object[] obj : objects) {
       Company c = new Company();
       c.id = (Integer) obj[0];
@@ -49,12 +49,12 @@ public class CompanyDaoImpl implements CompanyDao {
   public List<Company> getAll() {
     List<Company> companies = new ArrayList<>();
     List<Object[]> objects = dbClient.runForResult(SELECT_ALL);
-      for (Object[] obj : objects){
-        Company c = new Company();
-        c.id = (Integer) obj[0];
-        c.name = (String) obj[1];
-        companies.add(c);
-      }
+    for (Object[] obj : objects) {
+      Company c = new Company();
+      c.id = (Integer) obj[0];
+      c.name = (String) obj[1];
+      companies.add(c);
+    }
     return companies;
   }
 

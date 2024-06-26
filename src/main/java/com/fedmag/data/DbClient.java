@@ -10,10 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DbClient {
+
   private final static String DB_URL = "jdbc:h2:./src/carsharing/db/carsharing";
   private final static String JDBC_DRIVER = "org.h2.Driver";
 
-  public DbClient()  {
+  public DbClient() {
     try {
       Class.forName(JDBC_DRIVER);
     } catch (ClassNotFoundException e) {
@@ -23,7 +24,7 @@ public class DbClient {
   }
 
   public void run(String str) {
-    System.out.println("Run: "  + str);
+    System.out.println("Run: " + str);
     try (
         Connection conn = DriverManager.getConnection(DB_URL);
         Statement statement = conn.createStatement()
@@ -57,7 +58,8 @@ public class DbClient {
     return results;
   }
 
-  public List<Object[]> runForResultWithParams(String query, List<Object> params) throws SQLException {
+  public List<Object[]> runForResultWithParams(String query, List<Object> params)
+      throws SQLException {
     List<Object[]> results = new ArrayList<>();
     try (
         Connection conn = DriverManager.getConnection(DB_URL);

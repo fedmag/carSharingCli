@@ -3,9 +3,10 @@ package com.fedmag.controllers;
 import com.fedmag.data.company.Company;
 import com.fedmag.menu.MenuElement;
 import java.util.List;
-import java.util.Scanner;
 
-public class ManagerMenuController extends AbstractMenuController { ;
+public class ManagerMenuController extends AbstractMenuController {
+
+  ;
 
   public ManagerMenuController(Controller controller) {
     super(controller);
@@ -15,7 +16,7 @@ public class ManagerMenuController extends AbstractMenuController { ;
     final MenuElement logInAsAManager = new MenuElement(1, "Log in as a manager", null);
     MenuElement companyListBtn = new MenuElement(1, "Company list", null);
     MenuElement createCompanyBtn = new MenuElement(2, "Create a company", null);
-    MenuElement backBtn = new MenuElement(0, "Back", backMenu );
+    MenuElement backBtn = new MenuElement(0, "Back", backMenu);
 
     // COMPANIES
     companyListBtn.setOnSelect((request) -> {
@@ -28,7 +29,8 @@ public class ManagerMenuController extends AbstractMenuController { ;
       }
       System.out.println("Choose the company:");
       // TODO remove this version that uses the item processor
-      List<MenuElement> children = generateChildren(allCompanies, request, new CompanyItemProcessor());
+      List<MenuElement> children = generateChildren(allCompanies, request,
+          new CompanyItemProcessor());
       children.add(new MenuElement(0, "Back", request.getCurrentElements()));
       companyListBtn.setChildren(children);
       System.out.println();

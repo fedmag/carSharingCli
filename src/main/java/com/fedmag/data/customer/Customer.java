@@ -1,6 +1,7 @@
 package com.fedmag.data.customer;
 
 public class Customer {
+
   Integer id;
   String name;
   Integer rentedCarId;

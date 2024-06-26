@@ -1,11 +1,13 @@
 package com.fedmag.data.car;
 
 public class Car {
+
   Integer id;
   String name;
   Integer companyId;
 
-  public Car() {}
+  public Car() {
+  }
 
   public Car(String name, Integer companyId) {
     this.name = name;

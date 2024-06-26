@@ -1,10 +1,12 @@
 package com.fedmag.data.company;
 
 public class Company {
+
   Integer id;
   String name;
 
-  public Company() {}
+  public Company() {
+  }
 
   public Company(String name) {
     this.name = name;

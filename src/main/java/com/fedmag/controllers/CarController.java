@@ -5,7 +5,6 @@ import com.fedmag.data.company.Company;
 import com.fedmag.menu.MenuElement;
 import com.fedmag.menu.Request;
 import java.util.List;
-import java.util.Scanner;
 
 public class CarController {
 

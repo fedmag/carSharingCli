@@ -3,6 +3,7 @@ package com.fedmag.menu;
 import java.util.List;
 
 public class Request {
+
   List<MenuElement> currentElements;
   MenuElement invoker;
 

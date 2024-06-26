@@ -3,7 +3,6 @@ package com.fedmag.controllers;
 import com.fedmag.data.customer.Customer;
 import com.fedmag.menu.MenuElement;
 import java.util.List;
-import java.util.Scanner;
 
 public class CreateCustomerController {
 

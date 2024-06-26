@@ -52,7 +52,7 @@ public class CustomerDaoImpl implements CustomerDao {
   public List<Customer> getAll() {
     List<Customer> customers = new ArrayList<>();
     List<Object[]> objects = dbClient.runForResult(SELECT_ALL);
-    for (Object[] obj : objects){
+    for (Object[] obj : objects) {
       Customer c = new Customer();
       c.id = (Integer) obj[0];
       c.name = (String) obj[1];

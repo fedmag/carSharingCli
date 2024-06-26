@@ -40,7 +40,8 @@ public class CustomerMenuController {
           List<MenuElement> children = controller.rentController.generateRentChildren(customer);
           children.add(new MenuElement(0, "Back", currentMenu));
           customerElement.setChildren(children);
-          return customerElement;})
+          return customerElement;
+        })
         .collect(Collectors.toList());
   }
 }

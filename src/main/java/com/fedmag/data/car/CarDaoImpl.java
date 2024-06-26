@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarDaoImpl implements CarDao{
+public class CarDaoImpl implements CarDao {
 
   private final static String CREATE_DB = "CREATE TABLE IF NOT EXISTS CAR "
       + "(id INTEGER primary key AUTO_INCREMENT, "
@@ -38,7 +38,7 @@ public class CarDaoImpl implements CarDao{
   @Override
   public Car getById(int id) {
     List<Car> cars = new ArrayList<>();
-    List<Object[]>  objects = dbClient.runForResult(String.format(SELECT_BY_ID, id));
+    List<Object[]> objects = dbClient.runForResult(String.format(SELECT_BY_ID, id));
     for (Object[] obj : objects) {
       Car c = new Car();
       c.id = (Integer) obj[0];

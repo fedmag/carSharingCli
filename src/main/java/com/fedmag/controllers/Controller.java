@@ -15,15 +15,13 @@ import java.util.Scanner;
 public class Controller {
 
   public static final Scanner sc = new Scanner(System.in);
-  private final DbClient dbClient = new DbClient();
-
-  public final CompanyDao companyDao = new CompanyDaoImpl(dbClient);
-  public final CarDao carDao = new CarDaoImpl(dbClient);
-  public final CustomerDao customerDao = new CustomerDaoImpl(dbClient);
-
   public final MainMenuController mainMenuController;
   public final CarController carController;
   public final RentController rentController;
+  private final DbClient dbClient = new DbClient();
+  public final CompanyDao companyDao = new CompanyDaoImpl(dbClient);
+  public final CarDao carDao = new CarDaoImpl(dbClient);
+  public final CustomerDao customerDao = new CustomerDaoImpl(dbClient);
 
   public Controller() throws ClassNotFoundException {
     mainMenuController = new MainMenuController(this);
