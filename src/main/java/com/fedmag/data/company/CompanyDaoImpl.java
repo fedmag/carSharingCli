@@ -13,9 +13,10 @@ public class CompanyDaoImpl implements CompanyDao {
   private final static String SELECT_BY_ID = "SELECT * FROM company WHERE id = %d";
   private final static String INSERT_COMPANY = "INSERT INTO company (name) VALUES ('%s')";
 
-  DbClient dbClient = new DbClient();
+  private final DbClient dbClient;
 
-  public CompanyDaoImpl() throws ClassNotFoundException {
+  public CompanyDaoImpl(DbClient dbClient) {
+    this.dbClient = dbClient;
     init();
   }
 

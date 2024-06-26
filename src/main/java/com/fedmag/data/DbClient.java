@@ -13,8 +13,13 @@ public class DbClient {
   private final static String DB_URL = "jdbc:h2:./src/carsharing/db/carsharing";
   private final static String JDBC_DRIVER = "org.h2.Driver";
 
-  public DbClient() throws ClassNotFoundException {
-    Class.forName(JDBC_DRIVER);
+  public DbClient()  {
+    try {
+      Class.forName(JDBC_DRIVER);
+    } catch (ClassNotFoundException e) {
+      System.out.println("ERROR: Unable to obtain driver class.");
+      throw new RuntimeException(e);
+    }
   }
 
   public void run(String str) {

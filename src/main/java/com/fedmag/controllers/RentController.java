@@ -27,7 +27,6 @@ public class RentController {
       getRentedCarsChildren(customer);
       myRentedCar.setChildren(request.getCurrentElements());
     });
-
     return new ArrayList<>(List.of(rentACar, returnRentedCar, myRentedCar));
   }
 
@@ -103,6 +102,7 @@ public class RentController {
         })
         .collect(Collectors.toList());
   }
+
   private MenuElement getReturnRentedCar(Customer customer) {
     MenuElement returnRentedCar = new MenuElement(2, "Return a rented car", null);
     returnRentedCar.setOnSelect(request -> {
@@ -118,5 +118,4 @@ public class RentController {
     });
     return returnRentedCar;
   }
-
 }

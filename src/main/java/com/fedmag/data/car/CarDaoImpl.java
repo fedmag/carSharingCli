@@ -16,9 +16,10 @@ public class CarDaoImpl implements CarDao{
   private final static String SELECT_BY_ID = "SELECT * FROM car WHERE id = %d";
   private final static String INSERT_CAR = "INSERT INTO car (name, company_id) VALUES ('%s', %d)";
 
-  DbClient dbClient = new DbClient();
+  private final DbClient dbClient;
 
-  public CarDaoImpl() throws ClassNotFoundException {
+  public CarDaoImpl(DbClient dbClient) throws ClassNotFoundException {
+    this.dbClient = dbClient;
     init();
   }
 

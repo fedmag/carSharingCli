@@ -6,7 +6,6 @@ import com.fedmag.menu.MenuElement;
 import com.fedmag.menu.Request;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class CarController {
 
@@ -43,23 +42,11 @@ public class CarController {
 
     createCar.setOnSelect((Request request) -> {
       System.out.println("Enter the car name:");
-      Scanner sc = new Scanner(System.in);
-      String name = sc.nextLine();
-      System.out.println(formatInsertedValue(name));
-      // SAVE TO DB
+      String name = Controller.sc.nextLine();
+      System.out.println(name);
       controller.carDao.insert(new Car(name, company.getId()));
       createCar.setChildren(request.getCurrentElements());
     });
     return createCar;
-  }
-
-  public List<MenuElement> getAvailableCars(Company company) {
-    List<Car> cars = controller.carDao.getAllByCompanyId(company.getId());
-    return cars.stream().map(car -> new MenuElement(car.getId(), car.getName(), null)).collect(Collectors.toList());
-
-  }
-
-  private String formatInsertedValue(String str) {
-    return String.format("> %s", str);
   }
 }

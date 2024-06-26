@@ -18,17 +18,11 @@ public class CreateCustomerController {
 
     createCustomer.setOnSelect(request -> {
       System.out.println("Enter the customer name:");
-      Scanner sc = new Scanner(System.in);
-      String name = sc.nextLine();
-      System.out.println(formatInsertedValue(name));
-      // SAVE TO DB
+      String name = Controller.sc.nextLine();
+      System.out.println(name);
       controller.customerDao.insert(new Customer(name));
       createCustomer.setChildren(request.getCurrentElements());
     });
     return createCustomer;
-  }
-
-  private String formatInsertedValue(String str) {
-    return String.format("> %s", str);
   }
 }

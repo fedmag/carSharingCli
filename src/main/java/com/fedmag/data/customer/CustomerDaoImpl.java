@@ -16,9 +16,10 @@ public class CustomerDaoImpl implements CustomerDao {
   private final static String INSERT_CUSTOMER = "INSERT INTO customer (name) VALUES ('%s')";
   private final static String UPDATE_CUSTOMER = "UPDATE customer SET rented_car_id = %s WHERE id = %s";
 
-  DbClient dbClient = new DbClient();
+  private final DbClient dbClient;
 
-  public CustomerDaoImpl() throws ClassNotFoundException {
+  public CustomerDaoImpl(DbClient dbClient) {
+    this.dbClient = dbClient;
     init();
   }
 

@@ -5,6 +5,7 @@ import com.fedmag.menu.Request;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO REMOVE THIS CLASS
 public class AbstractMenuController {
 
   protected final Controller controller;

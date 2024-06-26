@@ -27,6 +27,7 @@ public class ManagerMenuController extends AbstractMenuController { ;
         return;
       }
       System.out.println("Choose the company:");
+      // TODO remove this version that uses the item processor
       List<MenuElement> children = generateChildren(allCompanies, request, new CompanyItemProcessor());
       children.add(new MenuElement(0, "Back", request.getCurrentElements()));
       companyListBtn.setChildren(children);
@@ -34,9 +35,8 @@ public class ManagerMenuController extends AbstractMenuController { ;
     });
     createCompanyBtn.setOnSelect(request -> {
       System.out.println("Enter the company name:");
-      Scanner sc = new Scanner(System.in);
-      String name = sc.nextLine();
-      System.out.println(formatInsertedValue(name));
+      String name = Controller.sc.nextLine();
+      System.out.println(name);
       // SAVE TO DB
       controller.companyDao.insert(new Company(name));
       createCompanyBtn.setChildren(request.getCurrentElements());
@@ -62,9 +62,4 @@ public class ManagerMenuController extends AbstractMenuController { ;
       return List.of(carList, createCar, back);
     }
   }
-
-  private String formatInsertedValue(String str) {
-    return String.format("> %s", str);
-  }
-
 }
