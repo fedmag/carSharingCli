@@ -6,8 +6,7 @@ public class Customer {
   String name;
   Integer rentedCarId;
 
-  public Customer() {
-  }
+  public Customer() {}
 
   public Customer(String name) {
     this.name = name;

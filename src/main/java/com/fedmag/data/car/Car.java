@@ -6,8 +6,7 @@ public class Car {
   String name;
   Integer companyId;
 
-  public Car() {
-  }
+  public Car() {}
 
   public Car(String name, Integer companyId) {
     this.name = name;

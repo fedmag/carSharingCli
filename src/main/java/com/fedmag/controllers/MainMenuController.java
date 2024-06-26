@@ -10,12 +10,12 @@ public class MainMenuController {
 
   public MainMenuController(Controller controller) {
     MenuElement exit = new MenuElement(0, "Exit", null);
-    MenuElement logInAsAManager = new ManagerMenuController(controller).generateLoginAsManager(
-        currentMenu);
-    MenuElement logInAsCustomer = new CustomerMenuController(controller).generateLoginAsCustomer(
-        currentMenu);
-    MenuElement createCustomer = new CreateCustomerController(controller).generateCreateCustomer(
-        currentMenu);
+    MenuElement logInAsAManager =
+        new ManagerMenuController(controller).generateLoginAsManager(currentMenu);
+    MenuElement logInAsCustomer =
+        new CustomerMenuController(controller).generateLoginAsCustomer(currentMenu);
+    MenuElement createCustomer =
+        new CreateCustomerController(controller).generateCreateCustomer(currentMenu);
     currentMenu.addAll(List.of(logInAsAManager, logInAsCustomer, createCustomer, exit));
   }
 

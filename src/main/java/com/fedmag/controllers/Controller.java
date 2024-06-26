@@ -33,12 +33,14 @@ public class Controller {
     elements.forEach(System.out::println);
     int selected = sc.nextInt();
     System.out.println(selected + "\n");
-    MenuElement selectedElement = elements
-        .stream()
-        .filter(e -> e.getDigit() == selected)
-        .findFirst()
-        .orElseThrow(() -> new IllegalAccessException("Invalid command"));
-    sc.nextLine(); // in order to share the scanner instance there is the need of clearing the buffer
+    MenuElement selectedElement =
+        elements.stream()
+            .filter(e -> e.getDigit() == selected)
+            .findFirst()
+            .orElseThrow(() -> new IllegalAccessException("Invalid command"));
+    sc
+        .nextLine(); // in order to share the scanner instance there is the need of clearing the
+                     // buffer
     if (selectedElement.getOnSelect() != null) {
       selectedElement.getOnSelect().execute(new Request(elements, selectedElement));
     }

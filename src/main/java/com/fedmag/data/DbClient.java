@@ -11,8 +11,8 @@ import java.util.List;
 
 public class DbClient {
 
-  private final static String DB_URL = "jdbc:h2:./src/carsharing/db/carsharing";
-  private final static String JDBC_DRIVER = "org.h2.Driver";
+  private static final String DB_URL = "jdbc:h2:./src/carsharing/db/carsharing";
+  private static final String JDBC_DRIVER = "org.h2.Driver";
 
   public DbClient() {
     try {
@@ -25,10 +25,8 @@ public class DbClient {
 
   public void run(String str) {
     System.out.println("Run: " + str);
-    try (
-        Connection conn = DriverManager.getConnection(DB_URL);
-        Statement statement = conn.createStatement()
-    ) {
+    try (Connection conn = DriverManager.getConnection(DB_URL);
+        Statement statement = conn.createStatement()) {
       statement.executeUpdate(str);
     } catch (SQLException e) {
       System.out.println("ERROR: unable to create the DB from String: " + str);
@@ -38,11 +36,9 @@ public class DbClient {
 
   public List<Object[]> runForResult(String query) {
     List<Object[]> results = new ArrayList<>();
-    try (
-        Connection conn = DriverManager.getConnection(DB_URL);
+    try (Connection conn = DriverManager.getConnection(DB_URL);
         Statement statement = conn.createStatement();
-        ResultSet rs = statement.executeQuery(query)
-    ) {
+        ResultSet rs = statement.executeQuery(query)) {
       int columnCount = rs.getMetaData().getColumnCount();
       while (rs.next()) {
         Object[] row = new Object[columnCount];
@@ -61,10 +57,8 @@ public class DbClient {
   public List<Object[]> runForResultWithParams(String query, List<Object> params)
       throws SQLException {
     List<Object[]> results = new ArrayList<>();
-    try (
-        Connection conn = DriverManager.getConnection(DB_URL);
-        PreparedStatement statement = conn.prepareStatement(query)
-    ) {
+    try (Connection conn = DriverManager.getConnection(DB_URL);
+        PreparedStatement statement = conn.prepareStatement(query)) {
       for (int i = 0; i < params.size(); i++) {
         statement.setObject(i + 1, params.get(i));
       }

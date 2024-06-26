@@ -2,7 +2,6 @@ package com.fedmag.menu;
 
 import java.util.List;
 
-
 public class MenuElement {
 
   int digit;
@@ -10,14 +9,12 @@ public class MenuElement {
   List<MenuElement> children;
   OnSelect onSelect;
 
-
   public MenuElement(String message, int digit) {
     this.message = message;
     this.digit = digit;
   }
 
-  public MenuElement(int digit, String message,
-      List<MenuElement> children) {
+  public MenuElement(int digit, String message, List<MenuElement> children) {
     this.digit = digit;
     this.message = message;
     this.children = children;

@@ -6,12 +6,13 @@ import java.util.List;
 
 public class CompanyDaoImpl implements CompanyDao {
 
-  private final static String CREATE_DB = "CREATE TABLE IF NOT EXISTS COMPANY "
-      + "(id INTEGER primary key AUTO_INCREMENT, "
-      + " NAME VARCHAR(255) UNIQUE NOT NULL)";
-  private final static String SELECT_ALL = "SELECT * FROM company";
-  private final static String SELECT_BY_ID = "SELECT * FROM company WHERE id = %d";
-  private final static String INSERT_COMPANY = "INSERT INTO company (name) VALUES ('%s')";
+  private static final String CREATE_DB =
+      "CREATE TABLE IF NOT EXISTS COMPANY "
+          + "(id INTEGER primary key AUTO_INCREMENT, "
+          + " NAME VARCHAR(255) UNIQUE NOT NULL)";
+  private static final String SELECT_ALL = "SELECT * FROM company";
+  private static final String SELECT_BY_ID = "SELECT * FROM company WHERE id = %d";
+  private static final String INSERT_COMPANY = "INSERT INTO company (name) VALUES ('%s')";
 
   private final DbClient dbClient;
 
@@ -21,10 +22,9 @@ public class CompanyDaoImpl implements CompanyDao {
   }
 
   void init() {
-//    dbClient.run("DROP TABLE company;");
+    //    dbClient.run("DROP TABLE company;");
     dbClient.run(CREATE_DB);
   }
-
 
   @Override
   public void insert(Company company) {
@@ -59,11 +59,8 @@ public class CompanyDaoImpl implements CompanyDao {
   }
 
   @Override
-  public void update(Company company) {
-
-  }
+  public void update(Company company) {}
 
   @Override
-  public void delete(Company company) {
-  }
+  public void delete(Company company) {}
 }

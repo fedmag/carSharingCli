@@ -6,15 +6,17 @@ import java.util.List;
 
 public class CustomerDaoImpl implements CustomerDao {
 
-  private final static String CREATE_DB = "CREATE TABLE IF NOT EXISTS CUSTOMER "
-      + "(id INTEGER primary key AUTO_INCREMENT, "
-      + " NAME VARCHAR(255) UNIQUE NOT NULL,"
-      + " RENTED_CAR_ID INTEGER DEFAULT NULL,"
-      + " FOREIGN KEY (rented_car_id) REFERENCES car(id))";
-  private final static String SELECT_BY_ID = "SELECT * FROM customer WHERE id = %d";
-  private final static String SELECT_ALL = "SELECT * FROM customer";
-  private final static String INSERT_CUSTOMER = "INSERT INTO customer (name) VALUES ('%s')";
-  private final static String UPDATE_CUSTOMER = "UPDATE customer SET rented_car_id = %s WHERE id = %s";
+  private static final String CREATE_DB =
+      "CREATE TABLE IF NOT EXISTS CUSTOMER "
+          + "(id INTEGER primary key AUTO_INCREMENT, "
+          + " NAME VARCHAR(255) UNIQUE NOT NULL,"
+          + " RENTED_CAR_ID INTEGER DEFAULT NULL,"
+          + " FOREIGN KEY (rented_car_id) REFERENCES car(id))";
+  private static final String SELECT_BY_ID = "SELECT * FROM customer WHERE id = %d";
+  private static final String SELECT_ALL = "SELECT * FROM customer";
+  private static final String INSERT_CUSTOMER = "INSERT INTO customer (name) VALUES ('%s')";
+  private static final String UPDATE_CUSTOMER =
+      "UPDATE customer SET rented_car_id = %s WHERE id = %s";
 
   private final DbClient dbClient;
 
@@ -24,10 +26,9 @@ public class CustomerDaoImpl implements CustomerDao {
   }
 
   void init() {
-//    dbClient.run("DROP TABLE CAR; DROP TABLE COMPANY;");
+    //    dbClient.run("DROP TABLE CAR; DROP TABLE COMPANY;");
     dbClient.run(CREATE_DB);
   }
-
 
   @Override
   public void insert(Customer customer) {
@@ -70,5 +71,4 @@ public class CustomerDaoImpl implements CustomerDao {
     }
     dbClient.run(String.format(UPDATE_CUSTOMER, carId, customer.getId()));
   }
-
 }

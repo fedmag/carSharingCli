@@ -14,8 +14,8 @@ public class AbstractMenuController {
     this.controller = controller;
   }
 
-  protected List<MenuElement> generateChildren(List<?> items, Request request,
-      ItemProcessor processor) {
+  protected List<MenuElement> generateChildren(
+      List<?> items, Request request, ItemProcessor processor) {
     List<MenuElement> children = new ArrayList<>();
     for (Object item : items) {
       MenuElement child = processor.processItem(item);
@@ -40,11 +40,10 @@ public class AbstractMenuController {
      * Creates the submenu to display if the current item is selected by the user.
      *
      * @param item that contains information used to obtain related objects. Usually an entity like
-     *             Company or Customer.
+     *     Company or Customer.
      * @param back menu to display if the back option is chosen.
      * @return MenuElements to display if the current object is selected.
      */
     List<MenuElement> getChildren(Object item, MenuElement back);
   }
-
 }

@@ -7,14 +7,16 @@ import java.util.List;
 
 public class CarDaoImpl implements CarDao {
 
-  private final static String CREATE_DB = "CREATE TABLE IF NOT EXISTS CAR "
-      + "(id INTEGER primary key AUTO_INCREMENT, "
-      + " NAME VARCHAR(255) UNIQUE NOT NULL,"
-      + " COMPANY_ID INTEGER NOT NULL,"
-      + " FOREIGN KEY (company_id) REFERENCES company(id))";
-  private final static String SELECT_BY_COMPANY_ID = "SELECT * FROM car WHERE company_id = ? ORDER BY id ASC";
-  private final static String SELECT_BY_ID = "SELECT * FROM car WHERE id = %d";
-  private final static String INSERT_CAR = "INSERT INTO car (name, company_id) VALUES ('%s', %d)";
+  private static final String CREATE_DB =
+      "CREATE TABLE IF NOT EXISTS CAR "
+          + "(id INTEGER primary key AUTO_INCREMENT, "
+          + " NAME VARCHAR(255) UNIQUE NOT NULL,"
+          + " COMPANY_ID INTEGER NOT NULL,"
+          + " FOREIGN KEY (company_id) REFERENCES company(id))";
+  private static final String SELECT_BY_COMPANY_ID =
+      "SELECT * FROM car WHERE company_id = ? ORDER BY id ASC";
+  private static final String SELECT_BY_ID = "SELECT * FROM car WHERE id = %d";
+  private static final String INSERT_CAR = "INSERT INTO car (name, company_id) VALUES ('%s', %d)";
 
   private final DbClient dbClient;
 
@@ -24,10 +26,9 @@ public class CarDaoImpl implements CarDao {
   }
 
   void init() {
-//    dbClient.run("DROP TABLE CAR; DROP TABLE COMPANY;");
+    //    dbClient.run("DROP TABLE CAR; DROP TABLE COMPANY;");
     dbClient.run(CREATE_DB);
   }
-
 
   @Override
   public void insert(Car car) {
@@ -67,4 +68,3 @@ public class CarDaoImpl implements CarDao {
     return cars;
   }
 }
-

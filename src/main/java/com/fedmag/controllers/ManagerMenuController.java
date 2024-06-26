@@ -5,7 +5,6 @@ import com.fedmag.menu.MenuElement;
 import java.util.List;
 
 public class ManagerMenuController extends AbstractMenuController {
-
   ;
 
   public ManagerMenuController(Controller controller) {
@@ -19,30 +18,32 @@ public class ManagerMenuController extends AbstractMenuController {
     MenuElement backBtn = new MenuElement(0, "Back", backMenu);
 
     // COMPANIES
-    companyListBtn.setOnSelect((request) -> {
-      // retrieve all companies and print them
-      List<Company> allCompanies = controller.companyDao.getAll();
-      if (allCompanies.isEmpty()) {
-        System.out.println("The company list is empty!\n");
-        companyListBtn.setChildren(List.of(companyListBtn, createCompanyBtn, backBtn));
-        return;
-      }
-      System.out.println("Choose the company:");
-      // TODO remove this version that uses the item processor
-      List<MenuElement> children = generateChildren(allCompanies, request,
-          new CompanyItemProcessor());
-      children.add(new MenuElement(0, "Back", request.getCurrentElements()));
-      companyListBtn.setChildren(children);
-      System.out.println();
-    });
-    createCompanyBtn.setOnSelect(request -> {
-      System.out.println("Enter the company name:");
-      String name = Controller.sc.nextLine();
-      System.out.println(name);
-      // SAVE TO DB
-      controller.companyDao.insert(new Company(name));
-      createCompanyBtn.setChildren(request.getCurrentElements());
-    });
+    companyListBtn.setOnSelect(
+        (request) -> {
+          // retrieve all companies and print them
+          List<Company> allCompanies = controller.companyDao.getAll();
+          if (allCompanies.isEmpty()) {
+            System.out.println("The company list is empty!\n");
+            companyListBtn.setChildren(List.of(companyListBtn, createCompanyBtn, backBtn));
+            return;
+          }
+          System.out.println("Choose the company:");
+          // TODO remove this version that uses the item processor
+          List<MenuElement> children =
+              generateChildren(allCompanies, request, new CompanyItemProcessor());
+          children.add(new MenuElement(0, "Back", request.getCurrentElements()));
+          companyListBtn.setChildren(children);
+          System.out.println();
+        });
+    createCompanyBtn.setOnSelect(
+        request -> {
+          System.out.println("Enter the company name:");
+          String name = Controller.sc.nextLine();
+          System.out.println(name);
+          // SAVE TO DB
+          controller.companyDao.insert(new Company(name));
+          createCompanyBtn.setChildren(request.getCurrentElements());
+        });
 
     logInAsAManager.setChildren(List.of(companyListBtn, createCompanyBtn, backBtn));
     return logInAsAManager;
