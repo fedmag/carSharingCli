@@ -1,4 +1,4 @@
-package carsharing.menu;
+package com.fedmag.menu;
 
 import java.util.List;
 

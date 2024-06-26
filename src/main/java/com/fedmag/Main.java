@@ -1,6 +1,6 @@
-package carsharing;
+package com.fedmag;
 
-import carsharing.menu.Controller;
+import com.fedmag.controllers.Controller;
 
 
 public class Main {

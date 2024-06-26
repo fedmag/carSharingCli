@@ -1,8 +1,6 @@
-package carsharing.data.company;
+package com.fedmag.data.company;
 
-import carsharing.data.car.Car;
-import carsharing.db.DbClient;
-import java.sql.SQLException;
+import com.fedmag.data.DbClient;
 import java.util.ArrayList;
 import java.util.List;
 

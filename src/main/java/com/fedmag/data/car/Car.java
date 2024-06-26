@@ -1,4 +1,4 @@
-package carsharing.data.car;
+package com.fedmag.data.car;
 
 public class Car {
   Integer id;

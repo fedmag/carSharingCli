@@ -1,22 +1,21 @@
-package carsharing.menu;
+package com.fedmag.controllers;
 
-import carsharing.controllers.CarController;
-import carsharing.controllers.MainMenuController;
-import carsharing.controllers.RentController;
-import carsharing.data.car.CarDao;
-import carsharing.data.car.CarDaoImpl;
-import carsharing.data.company.CompanyDao;
-import carsharing.data.company.CompanyDaoImpl;
-import carsharing.data.customer.CustomerDao;
-import carsharing.data.customer.CustomerDaoImpl;
+import com.fedmag.data.car.CarDao;
+import com.fedmag.data.car.CarDaoImpl;
+import com.fedmag.data.company.CompanyDao;
+import com.fedmag.data.company.CompanyDaoImpl;
+import com.fedmag.data.customer.CustomerDao;
+import com.fedmag.data.customer.CustomerDaoImpl;
+import com.fedmag.menu.MenuElement;
+import com.fedmag.menu.Request;
 import java.util.List;
 import java.util.Scanner;
 
 public class Controller {
 
   final Scanner sc = new Scanner(System.in);
-  public final CarDao carDao = new CarDaoImpl();
   public final CompanyDao companyDao = new CompanyDaoImpl();
+  public final CarDao carDao = new CarDaoImpl();
   public final CustomerDao customerDao = new CustomerDaoImpl();
 
   public final MainMenuController mainMenuController;
@@ -35,14 +34,14 @@ public class Controller {
     System.out.println(formatInsertedValue(selected + "\n"));
     MenuElement selectedElement = elements
         .stream()
-        .filter(e -> e.digit == selected)
+        .filter(e -> e.getDigit() == selected)
         .findFirst()
         .orElseThrow(() -> new IllegalAccessException("Invalid command"));
     if (selectedElement.getOnSelect() != null) {
-      selectedElement.onSelect.execute(new Request(elements, selectedElement));
+      selectedElement.getOnSelect().execute(new Request(elements, selectedElement));
     }
-    if (selectedElement.children != null && !selectedElement.children.isEmpty()) {
-      showMenuAndListen(selectedElement.children);
+    if (selectedElement.getChildren() != null && !selectedElement.getChildren().isEmpty()) {
+      showMenuAndListen(selectedElement.getChildren());
     }
   }
 

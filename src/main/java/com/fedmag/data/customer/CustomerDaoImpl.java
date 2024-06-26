@@ -1,12 +1,8 @@
-package carsharing.data.customer;
+package com.fedmag.data.customer;
 
-import carsharing.data.company.Company;
-import carsharing.data.customer.Customer;
-import carsharing.db.DbClient;
-import java.sql.SQLException;
+import com.fedmag.data.DbClient;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class CustomerDaoImpl implements CustomerDao {
 

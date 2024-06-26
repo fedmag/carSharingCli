@@ -1,4 +1,4 @@
-package carsharing.db;
+package com.fedmag.data;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

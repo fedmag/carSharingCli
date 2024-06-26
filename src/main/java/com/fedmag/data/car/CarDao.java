@@ -1,4 +1,4 @@
-package carsharing.data.car;
+package com.fedmag.data.car;
 
 import java.util.List;
 

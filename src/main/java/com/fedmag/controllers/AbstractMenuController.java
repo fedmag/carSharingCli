@@ -1,11 +1,9 @@
-package carsharing.controllers;
+package com.fedmag.controllers;
 
-import carsharing.menu.Controller;
-import carsharing.menu.MenuElement;
-import carsharing.menu.Request;
+import com.fedmag.menu.MenuElement;
+import com.fedmag.menu.Request;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class AbstractMenuController {
 

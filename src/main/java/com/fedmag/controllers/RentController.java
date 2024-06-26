@@ -1,10 +1,9 @@
-package carsharing.controllers;
+package com.fedmag.controllers;
 
-import carsharing.data.car.Car;
-import carsharing.data.company.Company;
-import carsharing.data.customer.Customer;
-import carsharing.menu.Controller;
-import carsharing.menu.MenuElement;
+import com.fedmag.data.car.Car;
+import com.fedmag.data.company.Company;
+import com.fedmag.data.customer.Customer;
+import com.fedmag.menu.MenuElement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
