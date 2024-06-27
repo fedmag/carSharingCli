@@ -31,8 +31,7 @@ public class ManagerMenuController {
             return;
           }
           System.out.println("Choose the company:");
-          List<MenuElement> children =
-              generateCompanyChildren(allCompanies, request);
+          List<MenuElement> children = generateCompanyChildren(allCompanies, request);
           children.add(new MenuElement(0, "Back", request.getCurrentElements()));
           companyListBtn.setChildren(children);
           System.out.println();

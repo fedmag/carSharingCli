@@ -15,7 +15,7 @@ public class MainMenuController {
     MenuElement logInAsCustomer =
         new CustomerMenuController(controller).generateLoginAsCustomer(currentMenu);
     MenuElement createCustomer =
-        new CreateCustomerController(controller).generateCreateCustomer(currentMenu);
+        new CreateCustomerController(controller).generateCreateCustomer();
     currentMenu.addAll(List.of(logInAsAManager, logInAsCustomer, createCustomer, exit));
   }
 

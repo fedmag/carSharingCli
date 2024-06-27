@@ -2,7 +2,6 @@ package com.fedmag.controllers;
 
 import com.fedmag.data.customer.Customer;
 import com.fedmag.menu.MenuElement;
-import java.util.List;
 
 public class CreateCustomerController {
 
@@ -12,7 +11,7 @@ public class CreateCustomerController {
     this.controller = controller;
   }
 
-  public MenuElement generateCreateCustomer(List<MenuElement> currentMenu) {
+  public MenuElement generateCreateCustomer() {
     MenuElement createCustomer = new MenuElement(3, "Create a customer", null);
 
     createCustomer.setOnSelect(

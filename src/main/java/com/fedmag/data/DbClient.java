@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DbClient {
 
-  private static final String DB_URL = "jdbc:h2:./src/carsharing/db/carsharing";
+  private static final String DB_URL = "jdbc:h2:./db";
   private static final String JDBC_DRIVER = "org.h2.Driver";
 
   public DbClient() {
