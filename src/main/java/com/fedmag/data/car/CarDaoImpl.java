@@ -20,7 +20,7 @@ public class CarDaoImpl implements CarDao {
 
   private final DbClient dbClient;
 
-  public CarDaoImpl(DbClient dbClient) throws ClassNotFoundException {
+  public CarDaoImpl(DbClient dbClient) {
     this.dbClient = dbClient;
     init();
   }

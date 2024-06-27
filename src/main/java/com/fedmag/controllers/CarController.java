@@ -41,7 +41,7 @@ public class CarController {
     MenuElement createCar = new MenuElement(2, "Create a car", null);
 
     createCar.setOnSelect(
-        (Request request) -> {
+        request -> {
           System.out.println("Enter the car name:");
           String name = Controller.sc.nextLine();
           System.out.println(name);

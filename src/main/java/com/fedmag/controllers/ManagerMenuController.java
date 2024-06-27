@@ -2,13 +2,16 @@ package com.fedmag.controllers;
 
 import com.fedmag.data.company.Company;
 import com.fedmag.menu.MenuElement;
+import com.fedmag.menu.Request;
+import java.util.ArrayList;
 import java.util.List;
 
-public class ManagerMenuController extends AbstractMenuController {
-  ;
+public class ManagerMenuController {
+
+  private final Controller controller;
 
   public ManagerMenuController(Controller controller) {
-    super(controller);
+    this.controller = controller;
   }
 
   MenuElement generateLoginAsManager(List<MenuElement> backMenu) {
@@ -19,7 +22,7 @@ public class ManagerMenuController extends AbstractMenuController {
 
     // COMPANIES
     companyListBtn.setOnSelect(
-        (request) -> {
+        request -> {
           // retrieve all companies and print them
           List<Company> allCompanies = controller.companyDao.getAll();
           if (allCompanies.isEmpty()) {
@@ -28,9 +31,8 @@ public class ManagerMenuController extends AbstractMenuController {
             return;
           }
           System.out.println("Choose the company:");
-          // TODO remove this version that uses the item processor
           List<MenuElement> children =
-              generateChildren(allCompanies, request, new CompanyItemProcessor());
+              generateCompanyChildren(allCompanies, request);
           children.add(new MenuElement(0, "Back", request.getCurrentElements()));
           companyListBtn.setChildren(children);
           System.out.println();
@@ -40,29 +42,23 @@ public class ManagerMenuController extends AbstractMenuController {
           System.out.println("Enter the company name:");
           String name = Controller.sc.nextLine();
           System.out.println(name);
-          // SAVE TO DB
           controller.companyDao.insert(new Company(name));
           createCompanyBtn.setChildren(request.getCurrentElements());
         });
-
     logInAsAManager.setChildren(List.of(companyListBtn, createCompanyBtn, backBtn));
     return logInAsAManager;
   }
 
-  private class CompanyItemProcessor implements ItemProcessor {
-
-    @Override
-    public MenuElement processItem(Object item) {
-      Company company = (Company) item;
-      return new MenuElement(company.getName(), company.getId());
-    }
-
-    @Override
-    public List<MenuElement> getChildren(Object item, MenuElement back) {
-      Company company = (Company) item;
+  private List<MenuElement> generateCompanyChildren(List<Company> allCompanies, Request request) {
+    List<MenuElement> children = new ArrayList<>();
+    for (Company company : allCompanies) {
+      MenuElement child = new MenuElement(company.getName(), company.getId());
+      MenuElement back = new MenuElement(0, "Back", request.getCurrentElements());
       MenuElement carList = controller.carController.generateCarListElement(company);
       MenuElement createCar = controller.carController.generateCreateCarElement(company);
-      return List.of(carList, createCar, back);
+      child.setChildren(List.of(carList, createCar, back));
+      children.add(child);
     }
+    return children;
   }
 }
